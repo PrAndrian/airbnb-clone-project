@@ -12,12 +12,14 @@ function Header() {
   return (
     <header className='sticky top-0 z-50 grid grid-cols-3 bg-white shadow-md p-5 md:px-10'>  
        {/* left */}
-      <div className='relative flex items-center h-10 cursor-pointer my-auto'>
+      <div className='flex items-center h-10 cursor-pointer my-auto'>
         <Image
           src="https://links.papareact.com/qd3"
-          layout='fill'
-          objectFit='contain'
-          objectPosition="left"
+          alt="Airbnb logo"
+          width={120}
+          height={40}
+          className="h-10 w-auto object-contain"
+          unoptimized
         />
       </div>
 
@@ -29,6 +31,7 @@ function Header() {
           placeholder="Start your search..."
         />
         <SearchIcon className='hidden md:inline-flex h-8 bg-red-400 text-white rounded-full p-2 cursor-pointer md:mx-2'/>
+        <SearchIcon className='inline-flex md:hidden h-8 w-8 mr-2 text-red-400' aria-hidden="true" />
       </div>
 
       {/* right  */}

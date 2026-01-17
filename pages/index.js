@@ -1,6 +1,5 @@
 // import type { NextPage } from 'next';
 import Head from 'next/head';
-import Image from 'next/image';
 import Header from '../components/Header';
 import Banner from '../components/Banner';
 import SmallCard from '../components/SmallCard';
@@ -26,7 +25,7 @@ import Footer from '../components/Footer';
         </section>
 
         {/* pull some data form API server */}
-        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4'>
           {exploreData?.map(({img,location,distance}) =>(
             <SmallCard 
               key={img}
@@ -64,20 +63,48 @@ import Footer from '../components/Footer';
 }
 
 export async function getStaticProps() {
-  const exploreData = await fetch('https://jsonkeeper.com/b/4G1G').
-  then (
-    (res) => res.json()
-  );  
-
-  const cardData = await fetch('https://jsonkeeper.com/b/VHHT').
-  then (
-    (res)=> res.json()
-  );
+  const exploreData = [
+    {
+      img: 'https://links.papareact.com/5j2',
+      location: 'London',
+      distance: '45-minute drive'
+    },
+    {
+      img: 'https://links.papareact.com/1to',
+      location: 'Manchester',
+      distance: '4.5-hour drive'
+    },
+    {
+      img: 'https://links.papareact.com/40m',
+      location: 'Liverpool',
+      distance: '4.5-hour drive'
+    },
+    {
+      img: 'https://links.papareact.com/msp',
+      location: 'York',
+      distance: '4-hour drive'
+    }
+  ];
+  const cardData = [
+    {
+      img: 'https://links.papareact.com/2io',
+      title: 'Outdoor getaways'
+    },
+    {
+      img: 'https://links.papareact.com/q7j',
+      title: 'Unique stays'
+    },
+    {
+      img: 'https://links.papareact.com/s03',
+      title: 'Entire homes'
+    }
+  ];
 
     return{
       props : {
         exploreData,
         cardData
-      }
+      },
+      revalidate: 60
     }
 }

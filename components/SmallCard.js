@@ -1,5 +1,5 @@
-import Image from 'next/image';
 import React from 'react'
+import Image from 'next/image';
 
 function SmallCard({img,location,distance}) {
   return (  
@@ -9,8 +9,11 @@ function SmallCard({img,location,distance}) {
             {/* left */}
             <Image 
                 src={img}
+                alt={location}
                 layout="fill"
+                objectFit="cover"
                 className='rounded-lg'
+                unoptimized
             />
         </div>
         <div>
